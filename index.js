@@ -1,34 +1,3 @@
-// const express = require("express");
-// const path = require('path')
-
-// let index = new express();
-// const publicPath = path.join(__dirname,'public')
-
-// //GET, POST, ...
-// index.get("/",function(req, res) {
-//     res.send("Hello from Node Sample");
-// });
-
-// index.get("/about",function(req, res){
-//     res.send("About web page");
-// });
-
-// index.get("/contact",function(req,res){
-//     res.send("@rsond");
-// });
-
-// index.use(express.static(publicPath))
-
-// index.get("*",function(req,res){
-//     res.send("");
-// });
-
-
-// let port = 12345;
-// index.listen(port,function(){
-//     console.log("Server started listening at localhost:"+port);
-// });
-// server.js
 const express = require('express');
 const app = express();
 const path = require('path');
