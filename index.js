@@ -24,5 +24,3 @@ app.get('/fuelhistory', (req, res) => {
 app.listen(3000, () => {
   console.log('Server started on port localhost:3000');
 });
-
-// 1 2 3 4 5 I'm here
