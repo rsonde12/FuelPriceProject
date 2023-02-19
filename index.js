@@ -27,7 +27,7 @@ app.get('/login', (req, res) => {
 
 // Define a route for the Registration page
 app.get('/ClientRegistration', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+  res.sendFile(path.join(__dirname, 'public', 'ClientRegistration.html'));
 });
 
 // Start the server
