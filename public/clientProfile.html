@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Client Profile</title>
   <link rel="stylesheet" href="global.css">
 </head>
@@ -21,7 +23,13 @@
       <input type="city" id="city" name="city" required>
 
       <label for="state">State:</label>
-      <input type="state" id="state" name="state" required>
+      <!-- <input type="state" id="state" name="state" required> -->
+      <select name="state" id="state" required>
+        <option value="none" selected disabled hidden>Please select a state</option>
+        <option value="AL">Alabama</option>
+        <option value="AK">Alaska</option>
+        <option value="AZ">Arizona</option>
+      </select>
 
       <label for="zipcode">Zip Code:</label>
       <input type="zipcode" id="zipcode" name="zipcode" required>
