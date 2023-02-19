@@ -12,10 +12,12 @@
   <main id="main-holder">
     <h1 id="login-header">Login</h1>
     
-    <form id="login-form">
-      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
-      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
-      <input type="submit" value="Submit" id="login-form-submit">
+    <form action="clientProfile.html" method="GET">
+      <input type="username" name="username" id="user" placeholder="Username" required>
+      <input type="password" name="password" id="pass" placeholder="Password" required>
+
+        <input type="submit" value="Submit" id="login-submit">
+
       <label>
         <input type="checkbox" checked="checked" name="remember"> <small> Remember Password
       </label>
