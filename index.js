@@ -20,6 +20,16 @@ app.get('/fuelhistory', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'fuelhistory.html'));
 });
 
+// Define a route for the login page
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
+// Define a route for the Registration page
+app.get('/ClientRegistration', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
 // Start the server
 app.listen(3000, () => {
   console.log('Server started on port localhost:3000');
