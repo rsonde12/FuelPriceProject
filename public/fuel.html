@@ -8,14 +8,29 @@
   <div><h1>Fuel Quote Form</h1></div>
   <div class="container">
     <form>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
+      <label for="gallon">Gallons Requested:</label>
+      <input type="number" min="0" id="gallon" name="gallon">
       
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+      <label for="address">Delivery Address:</label>
+      <input type="address" id="address" name="address">
+
+      <label for="date">Delivery Date:</label>
+      <input type="date" id="date" name="date">
+
+      <label for="price">Suggested Price / gallon:</label>
+      <input type="number" min="0" id="price" name="price">
+
+      <label for="total">Total Amount Due:</label>
+      <input type="number" min="0" id="total" name="total">
       
       <input type="submit" value="Submit">
     </form>
+  </div>
+  <div class="navbar">
+    <ul>
+      <li><a class="active" href="fuel.html">Fuel Quote Form</a></li>
+      <li><a href="fuelhistory.html">Fuel History</a></li>
+    </ul>
   </div>
 </body>
 </html>
