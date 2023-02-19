@@ -35,10 +35,10 @@ input, select{
   margin-top: 6px;
   margin-bottom: 16px;
   resize: vertical;
+  text-align: center;
 }
 
 input[type="submit"] {
-  /* margin-top: 10px; */
   background-color: #0417aa;
   color: white;
   padding: 12px 20px;
