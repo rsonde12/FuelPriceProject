@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="script.js" defer></script>
+  <link href="style.css" rel="stylesheet">
+  <link href="global.css" rel="stylesheet">
+
+  <title>Tabs</title>
+</head>
+<body>
+  <ul class="tabs">
+    <li data-tab-target="#signout" class="active tab">Sign Out</li>
+    <li data-tab-target="#fuelQ" class="tab">Fuel Quote Form</li>
+    <li data-tab-target="#fuelH" class="tab">Fuel Quote History</li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="Sign Out" data-tab-content class="active">
+      <h1>Sign Out</h1>
+      <p>You have successfully signed out.</p>
+    </div>
+
+    <div id="fuelQ" data-tab-content>
+        <div><h1>Fuel Quote Form</h1></div>
+        <div class="container">
+          <form>
+            <label for="gallon">Gallons Requested:</label>
+            <input type="number" min="0" id="gallon" name="gallon">
+            
+            <label for="address">Delivery Address:</label>
+            <input type="address" id="address" name="address">
+      
+            <label for="date">Delivery Date:</label>
+            <input type="date" id="date" name="date">
+      
+            <label for="price">Suggested Price / gallon:</label>
+            <input type="number" min="0" id="price" name="price">
+      
+            <label for="total">Total Amount Due:</label>
+            <input type="number" min="0" id="total" name="total">
+            
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+    </div>
+
+    <div id="fuelH" data-tab-content>
+        <div><h1>Fuel Quote History</h1></div>
+        <div class="fuel_table">
+          <table>
+              <tr>
+                <th>Gallon Requested</th>
+                <th>Delivery Date</th>
+                <th>Suggested Price</th>
+                <th>Total Price</th>
+              </tr>
+              <tr>
+                  <td>1</td>
+                  <td>2/3/22</td>
+                  <td>4</td>
+                  <td>54</td>
+                </tr>
+            </table>
+        </div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
+
