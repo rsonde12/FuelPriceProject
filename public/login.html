@@ -15,6 +15,18 @@
     <form action="clientProfile.html" method="GET">
       <input type="username" name="username" id="user" placeholder="Username" required>
       <input type="password" name="password" id="pass" placeholder="Password" required>
+      <input type="checkbox" onclick="showPass()">Show Password
+      <script>
+        function showPass(){
+          var x = document.getElementById("pass");
+          if(x.type == "password"){
+            x.type = "text";
+          }
+          else{
+            x.type = "password";
+          }
+        }
+      </script>
 
         <input type="submit" value="Login" id="login-submit">
 
