@@ -10,14 +10,14 @@
   <div><h1>Fuel Quote Form</h1></div>
   <div class="container">
     <form>
-      <label for="gallon">Gallons Requested:</label>
-      <input type="number" min="0" id="gallon" name="gallon">
+      <label for="gallon">Gallons Requested<span class="error">*</span></label>
+      <input type="number" min="0" id="gallon" name="gallon" required>
       
       <label for="address">Delivery Address:</label>
       <input type="text" id="address" name="address">
 
-      <label for="date">Delivery Date:</label>
-      <input type="date" id="date" name="date">
+      <label for="date">Delivery Date<span class="error">*</span></label>
+      <input type="date" id="date" name="date" required>
 
       <label for="price">Suggested Price / gallon:</label>
       <input type="number" min="0" id="price" name="price">
