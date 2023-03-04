@@ -4,15 +4,12 @@
   "description": "A app to determine the fuel price of clients",
   "main": "index.js",
   "scripts": {
-   "test": "Server started on port localhost:3000" 
+   "dev": "node index.js" 
   },
   "dependencies": {
     "express": "4.18.2",
     "pug": "3.0.2"
   },
-  "keywords": [
-    "nothing"
-  ],
-  "author": "me",
+  "author": "group 24",
   "license": "MIT"
 }

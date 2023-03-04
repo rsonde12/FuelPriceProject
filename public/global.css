@@ -28,6 +28,12 @@ label {
   margin: 10px 0;
 }
 
+/* label:after{
+  content: "*";
+  color: red;
+  margin-left: 2px;
+} */
+
 input, select{
   width: 100%;
   padding: 12px;
@@ -48,6 +54,15 @@ input[type="submit"] {
 
 input[type=submit]:hover {
   background-color: #45a049;
+}
+
+input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  padding: 1px;
+  margin: 2px;
+  vertical-align: bottom;
+  position: relative;
 }
 
 /*table for fuel quote history*/
