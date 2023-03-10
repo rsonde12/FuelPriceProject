@@ -15,7 +15,14 @@
     "mongoose": "^7.0.1",
     "nodemon": "^2.0.21",
     "pug": "3.0.2",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "axios": "^1.2.1",
+    "cors": "^2.8.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.5.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
   },
   "author": "group 24",
   "license": "MIT"

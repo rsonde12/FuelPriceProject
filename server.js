@@ -1,13 +1,9 @@
 const express = require('express');
-const app = express();
+const collection = express("./mongo");
 
-const port = process.env.PORT || 3000;
+const cors = require("cors")
+const app = express()
 
-app.set('view engine', 'public');
-
-app.get('/',(req,res) =>{
-    res.render('base',{title: "Login System"})
-})
-
-
-app.listen(port, ()=>{console.log("listening to the server on http://localhost:3000")});
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use(cors())
