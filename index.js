@@ -1,6 +1,17 @@
-const express = require('express');
-const app = express();
+// const express = require('express');
+// const app = express();
+// const path = require('path');
+
+const express = require("express")
 const path = require('path');
+const collection = require("./mongo")
+const cors = require("cors")
+const app = express()
+
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use(cors())
+
 
 // Set up middleware to serve static files
 app.use(express.static(path.join(__dirname, 'public')));
