@@ -7,11 +7,13 @@ const path = require('path');
 const collection = require("./mongo")
 const cors = require("cors")
 const app = express()
+const bodyParser = require("body-parser");
+const { default: mongoose } = require("mongoose");
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+app.use(bodyParser.urlencoded({extended:true}))
 app.use(cors())
-
 
 // Set up middleware to serve static files
 app.use(express.static(path.join(__dirname, 'public')));
