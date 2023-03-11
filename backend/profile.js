@@ -30,7 +30,7 @@ function submitClientProfile(){
     const newEntry = {name, address, address2, city, state, zipcode};
 
     //add new object to mock data fuel array
-    fuelhistory.push(newEntry);
+    profilehistory.push(newEntry);
 
     //display a confirmation message to the user
     alert("Your profile has been Created!")
