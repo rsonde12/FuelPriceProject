@@ -1,8 +1,15 @@
 /* style.css */
+
 body {
   background-color: #f2f2f2;
+  box-sizing: border-box;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
 }
+
 h1 {
+  padding: 1rem;
   color: rgb(29, 18, 148);
   text-align: center;
 }
@@ -64,29 +71,63 @@ input[type="checkbox"] {
 }
 
 /*table for fuel quote history*/
-table, th, td {
+/* table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
   border-color: #1d35d4;
   text-align: center;
   margin-left:auto; 
   margin-right:auto;
+} */
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+  width: 100%;
 }
 
-/*navigation bar*/
+th, td {
+  text-align: left;
+  border: 1px solid black;
+  padding: 8px;
+}
 
-ul {
+th {
+  background-color: #116ac3;
+  color: white;
+}
+
+tr:nth-child(odd) {
+  background-color:white;
+}
+
+
+/*navigation bar*/
+header{
+  background-color: black;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+}
+
+/* ul {
   margin: 0;
   padding: 0;
   width: 200px;
   height: 100%;
   background-color: #f1f1f1;
   border: 1px solid #555;
+} */
+
+nav ul{
+  display: flex;
+  list-style-type: none;
+  gap: 1rem;
 }
 
 li a {
   display: block;
-  color: #000;
+  color: grey;
   padding: 8px 16px;
   text-decoration: none;
   text-align: center;
