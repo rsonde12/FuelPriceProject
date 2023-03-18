@@ -7,15 +7,10 @@ To run our front-end application, please open the terminal and run the following
 ```
 npm start
 ```
-If the above command does not work, run the following command before re-running the above:
 
-```
-npm i express nodemon ejs express-session body-parser uuid
-```
-
-You will then recieve the following output:
+You will then recieve the following output in your terminal:
 ```
 Server started on port localhost:3000
 ```
 
-Copy only ```localhost:3000``` and input into your browser.
+Hold the ctrl key and click on ```localhost:3000``` which should automatically launch the url in your browser.
