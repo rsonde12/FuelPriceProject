@@ -1,0 +1,40 @@
+<%- include("layout/header") %>
+<body>
+  <div><h1>Client Profile</h1></div>
+  <table class="table">
+    <%if(clientProfileList.length > 0) {%>
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Address2</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        <th scope="col">Zipcode</th>
+      </tr>
+    </thead>
+    <%}%>
+    <tbody>
+      <%if(clientProfileList.length > 0) {%>
+        <%clientProfileList.forEach(item => {%>
+          <%if(item.userid == "1") {%>
+            <tr>
+              <td scope="row"><%= item.name %></td>
+              <td><%= item.address %></td>
+              <td><%= item.address2 %></td>
+              td><%= item.city %></td>
+              <td><%= item.state %></td>
+              <td><%= item.zipcode %></td>
+            </tr>
+          <%}%>
+        <%})%>
+        <%}%>
+        <%})%>
+        <%}
+      <%} else{%>
+        <p>No Client Profile available</p>
+      <%}%>
+    </tbody>
+  </table>
+</body>
+</html>

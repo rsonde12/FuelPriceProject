@@ -19,10 +19,41 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
-// Define a route for the home page
+// Define a route for the Registration page
+app.get('/clientRegistration', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'clientRegistration.html'));
+});
+
+// // Define a route for the client profile page
 app.get('/clientProfile', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'clientProfile.html'));
 });
+
+//pulls information from front end fuel page
+app.post("clientProfile", function(req,res){
+  let clientProfile = {
+      userid: "1",
+      name: req.body.name,
+      address: req.body.address,
+      address2: req.body.address2,
+      city: req.body.city,
+      state: req.body.state,
+      zipcode: req.body.zipcode
+  };
+
+  console.log(clientProfile);
+  res.redirect("/clientProfile");
+});
+
+// Define a route for the client profile page
+let mangeProfile = [
+  {userid: 1, name: "Jane Doe", address: "5 street ln" , address2: "1235 street ln", city: "Haven", state: "TX", zipcode: 5980 },
+];
+//uses ejs file instead of static html to display profile history
+app.get('/mangeProfile', (req, res) => {
+  res.render('mangeProfile', {profileList: mangeProfile})
+});
+
 
 // Define a route for the fuel page
 app.get('/fuel', (req, res) => {
@@ -59,12 +90,6 @@ app.get('/fuelhistory', (req, res) => {
 // app.get('/fuelhistory', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'public', 'fuelhistory.html'));
 // });
-
-
-// Define a route for the Registration page
-app.get('/clientRegistration', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'clientRegistration.html'));
-});
 
 // Start the server
 const PORT = 3000;
