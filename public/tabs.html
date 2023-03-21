@@ -70,25 +70,28 @@
 
       <div id="profile" data-tab-content>
         <div><h1>Client Profile</h1></div>
-        <div class="clientProfile">
-          <table>
-              <tr>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Address 2</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zipcode</th>
-              </tr>
-              <tr>
-                  <td>Jane Doe</td>
-                  <td>123 lan streat</td>
-                  <td>n/a</td>
-                  <td>Katy</td>
-                  <td>TX</td>
-                  <td>77024</td>
-                </tr>
-            </table>
+        <div class="container">
+          <form>
+            <label for="Name">Name:</label>
+            <input type="number" min="0" id="gallon" name="gallon">
+            
+            <label for="address">Address:</label>
+            <input type="address" id="address" name="address">
+
+            <label for="address2">Address2:</label>
+            <input type="address2" id="address2" name="address2">
+      
+            <label for="city">City:</label>
+            <input type="city" id="city" name="city">
+      
+            <label for="state">State:</label>
+            <input type="state" min="0" id="state" name="state">
+      
+            <label for="zipcode">Zipcode:</label>
+            <input type="number" min="0" id="zipcode" name="zipcode">
+            
+            <input type="submit" value="Submit">
+          </form>
         </div>
       </div>
 
