@@ -7,22 +7,27 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // app.use(express.json());
-app.use(bodyParser.urlencoded({extended:true}));
 // app.use(cors());
+app.use(bodyParser.urlencoded({extended:true}));
+
 
 // Set up middleware to serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
+
 
 // Define a route for the login page
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
+
 // Define a route for the Registration page
 app.get('/clientRegistration', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'clientRegistration.html'));
 });
+
+
 
 // // Define a route for the client profile page
 app.get('/clientProfile', (req, res) => {
@@ -30,7 +35,7 @@ app.get('/clientProfile', (req, res) => {
 });
 
 //pulls information from front end fuel page
-app.post("clientProfile", function(req,res){
+app.post('/clientProfile', function(req,res){
   let clientProfile = {
       userid: "1",
       name: req.body.name,
@@ -42,8 +47,11 @@ app.post("clientProfile", function(req,res){
   };
 
   console.log(clientProfile);
-  res.redirect("/clientProfile");
+  res.redirect("/fuel");
 });
+
+
+
 
 // Define a route for the client profile page
 let mangeProfile = [
@@ -55,10 +63,18 @@ app.get('/mangeProfile', (req, res) => {
 });
 
 
+
+
 // Define a route for the fuel page
+const Address = "123 Streetname Dr Houston, TX 77204"
+app.get('/fuel', (req, res) => {
+  res.render('fuel', {userAddress: Address})
+});
+
+/*Uses HTML File instead of ejs
 app.get('/fuel', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'fuel.html'));
-});
+});*/
 
 //pulls information from front end fuel page
 app.post("/fuel", function(req,res){
@@ -75,6 +91,9 @@ app.post("/fuel", function(req,res){
 });
 
 
+
+
+
 // Define a route for the fuel quote history page
 let fuelhistory = [
   {userid: 1, gallons: 10, price: 5, total: 50 },
@@ -83,13 +102,16 @@ let fuelhistory = [
   {userid: 2, gallons: 40, price: 7, total: 280 },
   {userid: 1, gallons: 30, price: 20, total: 500 }
 ];
-//uses ejs file instead of static html to display fuel history
 app.get('/fuelhistory', (req, res) => {
   res.render('fuelhistory', {fuelList: fuelhistory})
 });
-// app.get('/fuelhistory', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'public', 'fuelhistory.html'));
-// });
+
+/*Uses HTML file instead of ejs
+app.get('/fuelhistory', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'fuelhistory.html'));
+});*/
+
+
 
 // Start the server
 const PORT = 3000;
