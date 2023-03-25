@@ -1,10 +1,11 @@
 const express = require("express")
 const path = require('path');
-const collection = require("./mongo")
 const cors = require("cors")
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const app = express();
+const mongoose = require('mongoose');
+const Fuel = require('./models/fuel.js');
 
 // app.use(express.json());
 // app.use(cors());
@@ -14,6 +15,14 @@ app.use(bodyParser.urlencoded({extended:true}));
 // Set up middleware to serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
+
+mongoose.connect("mongodb://0.0.0.0:27017/testing", {useNewUrlParser: true}, {useUnifiedTopology: true})
+.then(() =>{
+    console.log("mongodb connected");
+})
+.catch(() =>{
+    console.log('failed');
+})
 
 
 // Define a route for the login page
@@ -87,6 +96,7 @@ app.post("/fuel", function(req,res){
   };
 
   console.log(fuel);
+  Fuel.create(fuel).then((a, b) => a.save());
   res.redirect("/fuel");
 });
 
@@ -95,15 +105,24 @@ app.post("/fuel", function(req,res){
 
 
 // Define a route for the fuel quote history page
-let fuelhistory = [
-  {userid: 1, gallons: 10, price: 5, total: 50 },
-  {userid: 1, gallons: 20, price: 5, total: 100 },
-  {userid: 1, gallons: 30, price: 7, total: 210 },
-  {userid: 2, gallons: 40, price: 7, total: 280 },
-  {userid: 1, gallons: 30, price: 20, total: 500 }
-];
+// let fuelhistory = [
+//   {userid: 1, gallons: 10, price: 5, total: 50 },
+//   {userid: 1, gallons: 20, price: 5, total: 100 },
+//   {userid: 1, gallons: 30, price: 7, total: 210 },
+//   {userid: 2, gallons: 40, price: 7, total: 280 },
+//   {userid: 1, gallons: 30, price: 20, total: 500 }
+// ];
 app.get('/fuelhistory', (req, res) => {
-  res.render('fuelhistory', {fuelList: fuelhistory})
+  Fuel.find().then(function(fuelhistory,err){
+    if(err){
+        console.log('error')
+    }
+    else{
+        // console.log(fuelhistory)
+        res.render('fuelhistory', {fuelList: fuelhistory});
+    }
+});
+  // res.render('fuelhistory', {fuelList: fuelhistory})
 });
 
 /*Uses HTML file instead of ejs

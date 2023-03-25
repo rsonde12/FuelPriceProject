@@ -7,6 +7,7 @@
     <thead>
       <tr>
         <th scope="col">Gallons</th>
+        <th scope="col">Date</th>
         <th scope="col">Price</th>
         <th scope="col">Total Price</th>
       </tr>
@@ -15,13 +16,12 @@
     <tbody>
       <%if(fuelList.length > 0) {%>
         <%fuelList.forEach(item => {%>
-          <%if(item.userid == "1") {%>
-            <tr>
-              <td scope="row"><%= item.gallons %></td>
-              <td><%= item.price %></td>
-              <td><%= item.total %></td>
-            </tr>
-          <%}%>
+          <tr>
+            <td scope="row"><%= item.gallons %></td>
+            <td><%= item.date %></td>
+            <td><%= item.price %></td>
+            <td><%= item.total %></td>
+          </tr>
         <%})%>
       <%} else{%>
         <p>No fuel history available</p>
