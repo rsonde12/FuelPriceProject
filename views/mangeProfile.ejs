@@ -17,21 +17,16 @@
     <tbody>
       <%if(clientProfileList.length > 0) {%>
         <%clientProfileList.forEach(item => {%>
-          <%if(item.userid == "1") {%>
             <tr>
               <td scope="row"><%= item.name %></td>
               <td><%= item.address %></td>
               <td><%= item.address2 %></td>
-              td><%= item.city %></td>
+              <td><%= item.city %></td>
               <td><%= item.state %></td>
               <td><%= item.zipcode %></td>
             </tr>
-          <%}%>
         <%})%>
-        <%}%>
-        <%})%>
-        <%}
-      <%} else{%>
+        <%} else{%>
         <p>No Client Profile available</p>
       <%}%>
     </tbody>

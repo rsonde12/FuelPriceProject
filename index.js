@@ -5,7 +5,8 @@ const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
-const Fuel = require('./models/fuel.js');
+const Fuel = require('./models/fuel.js'); 
+const profile = require('./models/clientProfile.js');
 
 // app.use(express.json());
 // app.use(cors());
@@ -56,6 +57,7 @@ app.post('/clientProfile', function(req,res){
   };
 
   console.log(clientProfile);
+  profile.create(clientProfile).then((a, b) => a.save());
   res.redirect("/fuel");
 });
 
@@ -63,12 +65,25 @@ app.post('/clientProfile', function(req,res){
 
 
 // Define a route for the client profile page
-let mangeProfile = [
-  {userid: 1, name: "Jane Doe", address: "5 street ln" , address2: "1235 street ln", city: "Haven", state: "TX", zipcode: 5980 },
-];
+// let mangeProfile = [
+//   {userid: 1, name: "Jane Doe", address: "5 street ln" , address2: "1235 street ln", city: "Haven", state: "TX", zipcode: 5980 },
+// ];
 //uses ejs file instead of static html to display profile history
+// app.get('/mangeProfile', (req, res) => {
+//   res.render('mangeProfile', {profileList: mangeProfile})
+// });
+
 app.get('/mangeProfile', (req, res) => {
-  res.render('mangeProfile', {profileList: mangeProfile})
+  profile.find().then(function(mangeProfile,err){
+    if(err){
+        console.log('error')
+    }
+    else{
+        //console.log(mangeProfile)
+        res.render('mangeProfile', {clientProfileList: mangeProfile});
+    }
+});
+  // res.render('fuelhistory', {fuelList: fuelhistory})
 });
 
 
