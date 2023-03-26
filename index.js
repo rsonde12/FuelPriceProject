@@ -7,6 +7,7 @@ const app = express();
 const mongoose = require('mongoose');
 const Fuel = require('./models/fuel.js'); 
 const profile = require('./models/clientProfile.js');
+const clientRegistor = require('./models/registration.js');
 
 // app.use(express.json());
 // app.use(cors());
@@ -33,9 +34,22 @@ app.get('/', (req, res) => {
 });
 
 
-// Define a route for the Registration page
-app.get('/clientRegistration', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'clientRegistration.html'));
+// // Define a route for the Registration page
+app.get('/ClientRegistration', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'ClientRegistration.html'));
+});
+
+//pulls information from front end registor page
+app.post("/ClientRegistration", function(req,res){
+  let clientReg = {
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email
+  };
+
+  //console.log(clientReg);
+  clientRegistor.create(clientReg).then((a, b) => a.save());
+  res.redirect("/clientProfile");
 });
 
 
