@@ -13,10 +13,11 @@ const profile = require('./models/clientProfile.js');
 app.use(bodyParser.urlencoded({extended:true}));
 
 
-// Set up middleware to serve static files
+// Set up middleware to serve static and ejs files
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
+//Set up database connection
 mongoose.connect("mongodb://0.0.0.0:27017/testing", {useNewUrlParser: true}, {useUnifiedTopology: true})
 .then(() =>{
     console.log("mongodb connected");
@@ -82,7 +83,7 @@ app.get('/mangeProfile', (req, res) => {
         //console.log(mangeProfile)
         res.render('mangeProfile', {clientProfileList: mangeProfile});
     }
-});
+  });
   // res.render('fuelhistory', {fuelList: fuelhistory})
 });
 
@@ -90,15 +91,21 @@ app.get('/mangeProfile', (req, res) => {
 
 
 // Define a route for the fuel page
-const Address = "123 Streetname Dr Houston, TX 77204"
+// const Address = "123 Streetname Dr Houston, TX 77204"
 app.get('/fuel', (req, res) => {
-  res.render('fuel', {userAddress: Address})
+  profile.find({name: "John"}).then(function(record,err){
+    if(err){
+        console.log('error')
+    }
+    else{
+        // console.log(record)
+        const { address, city, state, zipcode } = record[0];
+        // console.log(`${address}, ${city}, ${state} ${zipcode}`);
+        res.render('fuel', {userAddress: `${address}, ${city}, ${state} ${zipcode}`})
+    }
+  });
+  // res.render('fuel', {userAddress: Address})
 });
-
-/*Uses HTML File instead of ejs
-app.get('/fuel', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'fuel.html'));
-});*/
 
 //pulls information from front end fuel page
 app.post("/fuel", function(req,res){
@@ -136,14 +143,9 @@ app.get('/fuelhistory', (req, res) => {
         // console.log(fuelhistory)
         res.render('fuelhistory', {fuelList: fuelhistory});
     }
-});
+  });
   // res.render('fuelhistory', {fuelList: fuelhistory})
 });
-
-/*Uses HTML file instead of ejs
-app.get('/fuelhistory', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'fuelhistory.html'));
-});*/
 
 
 
