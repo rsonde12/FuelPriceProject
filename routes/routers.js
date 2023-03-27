@@ -1,3 +1,4 @@
+// File Description: All the route handling (GET, POST, DELETE) and all other updates.
 const express = require("express");
 const session = require('express-session');
 const router = express.Router();
@@ -17,26 +18,20 @@ router.use(session({
 // Parse request body
 router.use(bodyParser.urlencoded({ extended: true }));
 
-// Middleware function to check if user is logged in
-// function isLoggedIn(req, res, next) {
-//   if (req.session.userId) {
-//     // If user is logged in, proceed to next middleware function
-//     next();
-//   } else {
-//     // If user is not logged in, redirect to login page
-//     res.redirect('/');
-//   }
-// }
 
+// Define a route for the login page
 router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'login.html'));
 });
 
+
+// Define a route for the Registration page
 router.get('/ClientRegistration', (req, res) => {
   res.render('registration.ejs');
   // res.sendFile(path.join(__dirname, '..', 'public', 'ClientRegistration.html'));
 });
 
+//Pulls registration info from front end and saves to database
 router.post("/ClientRegistration", async function(req,res){
   let clientReg = {
       username: req.body.username,
@@ -57,7 +52,6 @@ router.post("/ClientRegistration", async function(req,res){
       console.log('not exist');
       // Save the user ID in the session, the values in database and redirect to profile
       req.session.userId = username;
-      // console.log(req.session.userId);
       // Registration.create(clientReg).then((a, b) => a.save());
       const registeredClient = await Registration.create(clientReg);
       await registeredClient.save();
@@ -67,16 +61,19 @@ router.post("/ClientRegistration", async function(req,res){
 });
 
 
+
+// Define a route for the Profile page
 router.get('/clientProfile', (req, res) => {
   res.render('profile.ejs');
   // res.sendFile(path.join(__dirname, '..', 'public', 'clientProfile.html'));
 });
 
+//Pulls profile info from front end and saves to database
 router.post('/clientProfile', async function(req,res){
   // Check if the user is logged in by checking if the user ID is saved in the session
   if (req.session.userId) {
     let clientProfile = {
-        userid: req.session.userId,
+        username: req.session.userId,
         name: req.body.name,
         address: req.body.address,
         address2: req.body.address2,
@@ -84,9 +81,6 @@ router.post('/clientProfile', async function(req,res){
         state: req.body.state,
         zipcode: req.body.zipcode
     };
-    console.log(clientProfile);
-    const { address } = clientProfile;
-    req.session.address = address;
     // Profile.create(clientProfile).then((a, b) => a.save());
     const profile = await Profile.create(clientProfile);
     await profile.save();
@@ -95,12 +89,14 @@ router.post('/clientProfile', async function(req,res){
   else {
     // If the user is not logged in, redirect to the login page
     console.log(req.session.userId);
-    res.redirect('/');
+    res.redirect('/error');
   }
 });
 
+
+// Define a route for the Manage Profile page
 router.get('/mangeProfile', (req, res) => {
-  Profile.find().then(function(mangeProfile,err){
+  Profile.find({username: req.session.userId}).then(function(mangeProfile,err){
     if(err){
         console.log('error')
     }
@@ -110,30 +106,30 @@ router.get('/mangeProfile', (req, res) => {
   });
 });
 
+
+
+// Define a route for the Fuel form page
 router.get('/fuel', (req, res) => {
   if (req.session.userId) {
-    res.render('fuel', {userAddress: req.session.address})
-    // Profile.find({userid: req.session.userId}).then(function(record,err){
-    //   if(err){
-    //       console.log('error')
-    //   }
-    //   else{
-    //       // console.log(record);
-    //       // const { address, city, state, zipcode } = record[0];
-    //       // res.render('fuel', {userAddress: `${address}, ${city}, ${state} ${zipcode}`});
-    //       res.render('fuel', {userAddress: req.session.userId});
-    //   }
-    // });
+    Profile.find({username: req.session.userId}).then(function(record,err){
+      if(err){
+          console.log('error')
+      }
+      else{
+          const { address, city, state, zipcode } = record[0];
+          res.render('fuel', {userAddress: `${address}, ${city}, ${state} ${zipcode}`});
+      }
+    });
   }else {
-    // If the user is not logged in, redirect to the login page
-    res.redirect('/');
+    res.redirect('/error');
   }
 });
 
+//Pulls fuel info from front end and saves to database
 router.post("/fuel", async function(req,res){
   if (req.session.userId) {
     let fuel = {
-        userid: req.session.userId,
+        username: req.session.userId,
         gallons: req.body.gallons,
         date: req.body.date,
         price: req.body.price,
@@ -144,29 +140,40 @@ router.post("/fuel", async function(req,res){
     await newfuel.save();
     res.redirect("/fuel");
   }else {
-    // If the user is not logged in, redirect to the login page
-    res.redirect('/');
+    res.redirect('/error');
   }
 });
 
+
+// Define a route for the Fuel History page
 router.get('/fuelhistory', (req, res) => {
   if (req.session.userId) {
-    Fuel.find({userid: req.session.userId}).then(function(fuelhistory,err){
-    if(err){
-      console.log('error')
-    }
-    else{
-      res.render('fuelhistory', {fuelList: fuelhistory});
-    }
-  });
-  // res.render('fuelhistory', {fuelList: fuelhistory})
+    Fuel.find({username: req.session.userId}).then(function(fuelhistory,err){
+      if(err){
+        console.log('error')
+      }
+      else{
+        // console.log(fuelhistory);
+        res.render('fuelhistory', {fuelList: fuelhistory});
+      }
+    });
+  }else {
+    res.redirect('/error');
   }
 });
 
+
+// Define a route for the Logout page
 router.get('/logout', (req, res) => {
-  // Destroy the session and redirect to the login page
   req.session.destroy();
-  res.redirect('/');
+  res.render('logout');
+});
+
+
+// Define a route for the Error page
+router.get('/error', (req, res) => {
+  req.session.destroy();
+  res.render('error');
 });
 
 
