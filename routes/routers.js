@@ -111,7 +111,7 @@ router.get('/mangeProfile', (req, res) => {
 // Define a route for the Fuel form page
 router.get('/fuel', (req, res) => {
   if (req.session.userId) {
-    Profile.find({username: req.session.userId}).then(function(record,err){
+    Profile.find({username: "username"}).then(function(record,err){
       if(err){
           console.log('error')
       }
@@ -129,18 +129,30 @@ router.get('/fuel', (req, res) => {
 router.post("/fuel", async function(req,res){
   if (req.session.userId) {
     let fuel = {
-        username: req.session.userId,
+        username: "username",
         gallons: req.body.gallons,
         date: req.body.date,
         price: req.body.price,
         total: req.body.total
     };
+    // console.log(fuel);
     // Fuel.create(fuel).then((a, b) => a.save());
     const newfuel = await Fuel.create(fuel);
     await newfuel.save();
     res.redirect("/fuel");
   }else {
     res.redirect('/error');
+  }
+});
+
+
+//defining the fuel calculator script
+router.get('/calculator.js', function(req, res) {
+  if(req.headers.referer && req.headers.referer.indexOf("http://localhost:3000/fuel") !== -1) {
+      res.setHeader('Content-Type', 'text/javascript');
+      res.sendFile(path.join(__dirname, '..', 'views', 'calculator.js'));
+  } else {
+      res.status(404).redirect("/error");
   }
 });
 

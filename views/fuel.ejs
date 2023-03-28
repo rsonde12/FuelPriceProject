@@ -14,14 +14,23 @@
       <label for="date">Delivery Date<span class="error">*</span></label>
       <input type="date" id="date" name="date" required>
 
-      <label for="price">Suggested Price / gallon:</label>
+      <input type="hidden" id="priceholder" name="price">
+      <input type="hidden" id="totalholder" name="total">
+
+      <button id="calculate-button">Calculate 20%</button>
+      <p id="result" style="font-size: xx-large;"></p>
+      <button id="submit-button" disabled>Submit</button>
+      <!-- <label for="price">Suggested Price / gallon:</label>
       <input type="number" min="0" id="price" name="price">
 
       <label for="total">Total Amount Due:</label>
-      <input type="number" min="0" id="total" name="total">
-      
-      <input type="submit" value="Submit">
+      <input type="number" min="0" id="total" name="total"> -->
+      <!-- <input type="submit" value="Submit"> -->
     </form>
-  </div>  
+  </div> 
 </body>
+<script>
+  const address = '<%= userAddress %>';
+</script>
+<script src="./calculator.js"></script> 
 </html>
