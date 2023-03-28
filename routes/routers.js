@@ -111,13 +111,27 @@ router.get('/mangeProfile', (req, res) => {
 // Define a route for the Fuel form page
 router.get('/fuel', (req, res) => {
   if (req.session.userId) {
-    Profile.find({username: "username"}).then(function(record,err){
+    Profile.find({username: req.session.userId}).then(function(record,err){
       if(err){
           console.log('error')
       }
       else{
           const { address, city, state, zipcode } = record[0];
-          res.render('fuel', {userAddress: `${address}, ${city}, ${state} ${zipcode}`});
+        Fuel.findOne({username: req.session.userId}).then(function(fuelrecord,err){
+          if(err){
+            console.log('error');
+          }
+          else if(fuelrecord){
+            // set a variable to true to indicate that the user was found
+            var userFound = true;
+            res.render('fuel', {userAddress: `${address}, ${city}, ${state} ${zipcode}`, found: userFound});
+          }
+          else{
+            // set a variable to false to indicate that the user was not found
+            var userFound = false;
+            res.render('fuel', {userAddress: `${address}, ${city}, ${state} ${zipcode}`, found: userFound});
+          }
+        });
       }
     });
   }else {
@@ -129,13 +143,12 @@ router.get('/fuel', (req, res) => {
 router.post("/fuel", async function(req,res){
   if (req.session.userId) {
     let fuel = {
-        username: "username",
+        username: req.session.userId,
         gallons: req.body.gallons,
         date: req.body.date,
         price: req.body.price,
         total: req.body.total
     };
-    // console.log(fuel);
     // Fuel.create(fuel).then((a, b) => a.save());
     const newfuel = await Fuel.create(fuel);
     await newfuel.save();
@@ -160,12 +173,11 @@ router.get('/calculator.js', function(req, res) {
 // Define a route for the Fuel History page
 router.get('/fuelhistory', (req, res) => {
   if (req.session.userId) {
-    Fuel.find({username: req.session.userId}).then(function(fuelhistory,err){
+    Fuel.find({username: "username"}).then(function(fuelhistory,err){
       if(err){
         console.log('error')
       }
       else{
-        // console.log(fuelhistory);
         res.render('fuelhistory', {fuelList: fuelhistory});
       }
     });

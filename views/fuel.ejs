@@ -8,8 +8,7 @@
       <input type="number" min="0" id="gallon" name="gallons" required>
       
       <label for="address">Delivery Address:</label>
-      <!-- <input type="text" id="address" name="address"> -->
-      <p><%=userAddress%></p>
+      <input type="text" style="background-color: rgb(234, 234, 234);" id="address" value='<%=userAddress%>' readonly>
 
       <label for="date">Delivery Date<span class="error">*</span></label>
       <input type="date" id="date" name="date" required>
@@ -17,20 +16,15 @@
       <input type="hidden" id="priceholder" name="price">
       <input type="hidden" id="totalholder" name="total">
 
-      <button id="calculate-button">Calculate 20%</button>
+      <button id="calculate-button">Calculate Fuel Price</button>
       <p id="result" style="font-size: xx-large;"></p>
       <button id="submit-button" disabled>Submit</button>
-      <!-- <label for="price">Suggested Price / gallon:</label>
-      <input type="number" min="0" id="price" name="price">
-
-      <label for="total">Total Amount Due:</label>
-      <input type="number" min="0" id="total" name="total"> -->
-      <!-- <input type="submit" value="Submit"> -->
     </form>
   </div> 
 </body>
 <script>
   const address = '<%= userAddress %>';
+  const history = '<%=found%>';
 </script>
 <script src="./calculator.js"></script> 
 </html>
