@@ -1,3 +1,4 @@
+// File Description: This calculates the suggested price per gallon and the total price from the fuel form
 const inputNumber = document.getElementById('gallon');
 const dateInput = document.getElementById('date');
 const calculateButton = document.getElementById('calculate-button');

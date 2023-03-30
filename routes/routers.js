@@ -96,14 +96,19 @@ router.post('/clientProfile', async function(req,res){
 
 // Define a route for the Manage Profile page
 router.get('/mangeProfile', (req, res) => {
-  Profile.find({username: req.session.userId}).then(function(mangeProfile,err){
-    if(err){
-        console.log('error')
-    }
-    else{
-        res.render('mangeProfile', {clientProfileList: mangeProfile});
-    }
-  });
+  if (req.session.userId) {
+    Profile.find({username: req.session.userId}).then(function(mangeProfile,err){
+      if(err){
+          console.log('error')
+      }
+      else{
+          res.render('mangeProfile', {clientProfileList: mangeProfile});
+      }
+    });
+  }else {
+    console.log(req.session.userId);
+    res.redirect('/error');
+  }
 });
 
 
@@ -163,7 +168,7 @@ router.post("/fuel", async function(req,res){
 router.get('/calculator.js', function(req, res) {
   if(req.headers.referer && req.headers.referer.indexOf("http://localhost:3000/fuel") !== -1) {
       res.setHeader('Content-Type', 'text/javascript');
-      res.sendFile(path.join(__dirname, '..', 'views', 'calculator.js'));
+      res.sendFile(path.join(__dirname, '..',  'backend', 'calculator.js'));
   } else {
       res.status(404).redirect("/error");
   }
