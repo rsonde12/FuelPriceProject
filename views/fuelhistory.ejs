@@ -1,4 +1,4 @@
-<%- include("layout/header") %>
+<%- include('layout/header', {activePage: "fuelhistory"}) %>
 <title>Fuel History</title>
 <body>
   <div><h1>Fuel Quote History</h1></div>
@@ -19,12 +19,12 @@
           <tr>
             <td scope="row"><%= item.gallons %></td>
             <td><%= item.date %></td>
-            <td><%= item.price %></td>
-            <td><%= item.total %></td>
+            <td>$<%= item.price %></td>
+            <td>$<%= item.total %></td>
           </tr>
         <%})%>
       <%} else{%>
-        <p>No fuel history available</p>
+        <p style="text-align: center;">No fuel history available</p>
       <%}%>
     </tbody>
   </table>

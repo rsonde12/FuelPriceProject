@@ -9,10 +9,10 @@
 <header>
   <nav>
     <ul>
-      <li><a href="/fuel">Fuel Form</a></li>
-      <li><a class="active" href="/fuelhistory">Fuel History</a></li>
-      <li><a href="/mangeProfile">View Profile</a></li>
-      <li><a href="/">Sign Out</a></li>
+      <li><a class="<%= activePage === 'fuel' ? 'active' : '' %>" href="/fuel"> Fuel Form</a></li>
+      <li><a class="<%= activePage === 'fuelhistory' ? 'active' : '' %>" href="/fuelhistory">Fuel History</a></li>
+      <li><a class="<%= activePage === 'manageProfile' ? 'active' : '' %>" href="/mangeProfile">View Profile</a></li>
+      <li><a href="/logout">Sign Out</a></li>
     </ul>
   </nav>
 </header>

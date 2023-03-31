@@ -2,6 +2,9 @@
 const mongoose = require('mongoose')
 
 const fuelSchema=new mongoose.Schema({
+    username:{
+        type:String
+    },
     gallons:{
         type:String,
         required:true
