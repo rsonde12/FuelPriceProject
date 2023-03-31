@@ -178,7 +178,7 @@ router.get('/calculator.js', function(req, res) {
 // Define a route for the Fuel History page
 router.get('/fuelhistory', (req, res) => {
   if (req.session.userId) {
-    Fuel.find({username: "username"}).then(function(fuelhistory,err){
+    Fuel.find({username: req.session.userId}).then(function(fuelhistory,err){
       if(err){
         console.log('error')
       }
