@@ -164,6 +164,14 @@ router.post("/fuel", async function(req,res){
 });
 
 
+/*router.get('/validation.js, function(req, res){  if(req.headers.referer && req.headers.referer.indexOf("http://localhost:3000/fuel") !== -1) {
+      res.setHeader('Content-Type', 'text/javascript');
+      res.sendFile(path.join(__dirname, '..',  'backend', 'calculator.js'));
+  } else {
+      res.status(404).redirect("/error");
+  }}
+  */
+
 //defining the fuel calculator script
 router.get('/calculator.js', function(req, res) {
   if(req.headers.referer && req.headers.referer.indexOf("http://localhost:3000/fuel") !== -1) {
