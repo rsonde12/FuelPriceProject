@@ -15,6 +15,8 @@ router.use(session({
   saveUninitialized: true
 }));
 
+router.use(express.static('public'));
+
 // Parse request body
 router.use(bodyParser.urlencoded({ extended: true }));
 

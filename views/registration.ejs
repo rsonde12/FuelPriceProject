@@ -5,12 +5,13 @@
   <link rel="stylesheet" href="global.css">
 </head>
 <body>
-  <div><h1>Registration Form</h1></div>
+  <!-- <div><h1>Registration Form</h1></div> -->
   <% if (typeof error !== 'undefined') { %>
     <p style="text-align: center;"><%= error %></p>
   <% } %>
   <div class="container">
     <form action="/ClientRegistration" method="POST">
+      <div><h1>Registration Form</h1></div>
       <label for="newusername">Create Username:</label>
       <input type="text" id="newusername" name="username" required>
       
