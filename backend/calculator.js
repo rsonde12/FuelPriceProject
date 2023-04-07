@@ -48,7 +48,7 @@ calculateButton.addEventListener('click', () => {
         console.log(history);
         const suggestedPrice = suggested(stateCode,number,history);
         const totalPrice = totalprice(suggestedPrice, number);
-        resultDiv.innerHTML = `The Suggested Price is: <span style="color:red;"><b>$${suggestedPrice}</b></span> <br/> Total Price is:<span style="color:red;"><b>$${totalPrice}</b></span>`;
+        resultDiv.innerHTML = `<span style="color:white">The Suggested Price is: </span><span style="color:aqua;"><b>$${suggestedPrice}</b></span> <br/> <span style="color:white">Total Price is:</span><span style="color:aqua;"><b>$${totalPrice}</b></span>`;
         document.getElementById('priceholder').value = suggestedPrice;
         document.getElementById('totalholder').value = totalPrice;
         submitButton.disabled = false;

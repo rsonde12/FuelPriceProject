@@ -9,7 +9,6 @@ body {
 
 h1 {
   padding: 1rem;
-  /* color: rgb(29, 18, 148); */
   text-shadow: 0 0 3px black;
   text-align: center;
   justify-content: center;
@@ -81,33 +80,51 @@ input[type="checkbox"] {
 /*fuel page styles*/
 .fuelcontainer{
   background-image: url(./oil_rig_1.jpg);
-  color:#fff;
-  position: relative;
-  height: 100vh;
+  height: 120vh;
+  background-size: cover;
+  background-position: center;
   align-items: center;
   justify-content: center;
   display: flex;
 }
 
+.fuelformcontainer{
+  --color: hsla(251, 74%, 27%, 0.75);
+  background-color: var(--color);
+  box-shadow: 0 0 15px 0 var(--color);
+  padding: 30px 20px;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 20px;
+}
+
+.fuelform label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  text-align: center;
+  margin: 10px 0;
+  color: white;
+  text-shadow: 0 0 3px black;
+}
+
 
 /*fuel history styles*/
-.historycontainer{
+.historycontainer {
   background-image: url(./offshore-oil-rig.jpg);
-  color:#fff;
+  height: 100vh;
+  /* width: 100vw; */
   background-size: cover;
-  min-height: calc(100vh - 160px);
-  margin: 0;
-  padding-top: 10vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  background-position: center;
   align-items: center;
+  justify-content: center;
+  /* display: flex; */
 }
 
 
-.historycontainer table {
-  margin-top: 2rem; /* add some margin to the top of the table */
-}
+/* .historycontainer table {
+  margin-top: 2rem;
+} */
 
 .historycontainer h1 {
   margin: 0; /* remove the default margin to allow for vertical alignment */
@@ -116,7 +133,13 @@ input[type="checkbox"] {
 
 
 /*table for fuel quote history*/
-table {
+/* table {
+  border-collapse: collapse;
+  border: 1px solid black;
+  width: 100%;
+} */
+.table {
+  margin-top: 2rem; /* add some margin to the top of the table */
   border-collapse: collapse;
   border: 1px solid black;
   width: 100%;
@@ -142,7 +165,6 @@ tr:nth-child(odd) {
 header{
   background-color: black;
   color: white;
-
   display: flex;
   justify-content: center;
 }
