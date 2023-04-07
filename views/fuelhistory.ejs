@@ -1,6 +1,7 @@
 <%- include('layout/header', {activePage: "fuelhistory"}) %>
 <title>Fuel History</title>
 <body>
+  <div class="historycontainer">
   <div><h1>Fuel Quote History</h1></div>
   <table class="table">
     <%if(fuelList.length > 0) {%>
@@ -24,9 +25,10 @@
           </tr>
         <%})%>
       <%} else{%>
-        <p style="text-align: center;">No fuel history available</p>
+        <p style="text-align: center;margin: auto;">No fuel history available</p>
       <%}%>
     </tbody>
   </table>
+</div>
 </body>
 </html>

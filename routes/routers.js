@@ -186,6 +186,7 @@ router.get('/fuelhistory', (req, res) => {
         console.log('error')
       }
       else{
+        console.log(fuelhistory)
         res.render('fuelhistory', {fuelList: fuelhistory});
       }
     });
