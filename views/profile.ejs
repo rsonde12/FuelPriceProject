@@ -2,22 +2,22 @@
 <title>Client Profile</title>
 <body>
   <!-- <div><h1>Client Profile Management</h1></div> -->
-  <div class="container">
+  <div class="historycontainer">
     <form action="/clientProfile" method="POST">
-      <div><h1>Client Profile Management</h1></div>
-      <label for="name">Name<span class="error">*</span></label>
+      <div><h1 style="color: white;">Client Profile Management</h1></div>
+      <label style="color: white;" for="name">Name<span class="error">*</span></label>
       <input type="text" id="name" name="name" maxlength="50" required>
       
-      <label for="address">Address<span class="error">*</span></label>
+      <label style="color: white;" for="address">Address<span class="error">*</span></label>
       <input type="text" id="address" name="address" maxlength="100" required>
 
-      <label for="address2">Address 2</label>
+      <label style="color: white;" for="address2">Address 2</label>
       <input type="text" id="address2" name="address2" maxlength="100">
 
-      <label for="city">City<span class="error">*</span></label>
+      <label style="color: white;" for="city">City<span class="error">*</span></label>
       <input type="text" id="city" name="city" maxlength="100" required>
 
-      <label for="state">State<span class="error">*</span></label>
+      <label style="color: white;" for="state">State<span class="error">*</span></label>
       <select name="state" id="state" required>
         <option value="none" selected disabled hidden>Please select a state</option>
         <option value="AL">AL</option>
@@ -72,7 +72,7 @@
         <option value="WY">WY</option>
       </select>
 
-      <label for="zipcode">Zipcode<span class="error">*</span></label>
+      <label style="color: white;" for="zipcode">Zipcode<span class="error">*</span></label>
       <input type="text" id="zipcode" name="zipcode" required>
       
       <input type="submit" value="Submit">

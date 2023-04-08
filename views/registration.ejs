@@ -5,16 +5,16 @@
   <% if (typeof error !== 'undefined') { %>
     <p style="text-align: center;"><%= error %></p>
   <% } %>
-  <div class="container">
+  <div class="historycontainer">
     <form action="/ClientRegistration" method="POST">
-      <div><h1>Registration Form</h1></div>
-      <label for="newusername">Create Username:</label>
+      <div><h1 style="color: white;" >Registration Form</h1></div>
+      <label style="color: white;" for="newusername">Create Username:</label>
       <input type="text" id="newusername" name="username" required>
       
-      <label for="newpassword">Create Password:</label>
+      <label style="color: white;" for="newpassword">Create Password:</label>
       <input type="text" id="newpassword" name="password" required>
 
-      <label for="newemail">Enter Email:</label>
+      <label style="color: white;" for="newemail">Enter Email:</label>
       <input type="email" id="newemail" name="email" required>
       
       <input type="submit" value="Register">
