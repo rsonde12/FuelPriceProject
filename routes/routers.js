@@ -47,11 +47,9 @@ router.post("/ClientRegistration", async function(req,res){
   await Registration.findOne({ username }).then(async(user) => {
     if(user !== null){
       // If exists, render the page again with an error message
-      console.log('exists');
       res.render('registration.ejs', { error: 'This username has already been taken. Please try again' });
     }
     else{
-      console.log('not exist');
       // Save the user ID in the session, the values in database and redirect to profile
       req.session.userId = username;
       // Registration.create(clientReg).then((a, b) => a.save());
