@@ -105,7 +105,8 @@ router.get('/mangeProfile', (req, res) => {
       }
       else{
           const {name} = mangeProfile[0];
-          res.render('mangeProfile', {clientProfileList: mangeProfile, Name: `${name}`});
+          const { address, city, state, zipcode } = mangeProfile[0];
+          res.render('mangeProfile', {clientProfileList: mangeProfile, Name: `${name}`, userAddress: `${address}, ${city}, ${state} ${zipcode}`});
       }
     });
   }else {
