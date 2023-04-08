@@ -89,7 +89,7 @@ input[type="checkbox"] {
 }
 
 .fuelformcontainer{
-  --color: hsla(251, 74%, 27%, 0.75);
+  --color: hsla(37, 85%, 45%, 0.685);
   background-color: var(--color);
   box-shadow: 0 0 15px 0 var(--color);
   padding: 30px 20px;
