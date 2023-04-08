@@ -108,6 +108,16 @@ input[type="checkbox"] {
   text-shadow: 0 0 3px black;
 }
 
+.profilebox label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  text-align: center;
+  margin: 10px 0;
+  color: white;
+  text-shadow: 0 0 3px black;
+}
+
 
 /*fuel history styles*/
 .historycontainer {
