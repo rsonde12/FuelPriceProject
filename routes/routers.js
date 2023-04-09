@@ -21,10 +21,30 @@ router.use(express.static('public'));
 router.use(bodyParser.urlencoded({ extended: true }));
 
 
-// Define a route for the login page
 router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'public', 'login.html'));
+  res.render('login');
 });
+
+router.post("/", async function(req,res){
+  let clientReg = {
+      username: req.body.username,
+      password: req.body.password,
+  };
+  const { username } = clientReg;
+  await Registration.findOne({ username }).then(async(user) => {
+    if(user !== null && user.username === username){
+      // If exists, render the page again with an error message
+      console.log('login');
+      req.session.userId = username;
+      res.redirect("/fuel");
+    }
+    else{
+      console.log('Error');
+      res.render('login.ejs', { error: 'Incorrect username or password, please try again' });
+    }
+  });
+});
+
 
 
 // Define a route for the Registration page
