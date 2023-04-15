@@ -57,10 +57,74 @@ describe("Fuel Tests", () => {
         })
       });
 
-  });
+    });
+
+    describe("Registration Tests", () => {
+        
+        it("Check username", async () => {
+                Registration.create({username: 'johndoe', password: 'apple123', email: 'ssanz@uh.edu'}).then((response) => {
+                expect(response.username).equal('johndoe');
+                done();
+            })
+        });
+    
+        it("Check password", async () => {
+            Registration.create({username: 'johndoe', password: 'apple123', email: 'ssanz@uh.edu'}).then((response) => {
+                expect(response.password).equal('apple123');
+                done();
+            })
+        });
+
+        it("Check email", async () => {
+            Registration.create({username: 'johndoe', password: 'apple123', email: 'ssanz@uh.edu'}).then((response) => {
+                expect(response.email).equal('ssanz@uh.edu');
+                done();
+            })
+        });
+    });
+
+    describe("Fuel Tests", () => {
+        
+        it("Check username", async () => {
+            var Ndate = Date.now();
+                Fuel.create({username: 'johndoe', gallon: '5', date: Ndate, price: '10', total: '50'}).then((response) => {
+                expect(response.username).equal('johndoe');
+                done();
+            })
+        });
+    
+        it("Check gallon", async () => {
+            var Ndate = Date.now();
+                Fuel.create({username: 'johndoe', gallon: '5', date: Ndate, price: '10', total: '50'}).then((response) => {
+                expect(response.gallon).equal('5');
+                done();
+            })
+        });
+
+        it("Check date", async () => {
+            var Ndate = Date.now();
+                Fuel.create({username: 'johndoe', gallon: '5', date: Ndate, price: '10', total: '50'}).then((response) => {
+                expect(response.date).equal(Ndate);
+                done();
+            })
+        });
+
+        it("Check price", async () => {
+            var Ndate = Date.now();
+                Fuel.create({username: 'johndoe', gallon: '5', date: Ndate, price: '10', total: '50'}).then((response) => {
+                expect(response.price).equal('10');
+                done();
+            })
+        });
+
+        it("Check total", async () => {
+            var Ndate = Date.now();
+                Fuel.create({username: 'johndoe', gallon: '5', date: Ndate, price: '10', total: '50'}).then((response) => {
+                expect(response.total).equal('50');
+                done();
+            })
+        });
+
+    });
 
 });
-
-
-
-
