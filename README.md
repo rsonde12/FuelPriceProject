@@ -14,3 +14,4 @@ Server started on port localhost:3000
 ```
 
 Hold the ctrl key and click on ```localhost:3000``` which should automatically launch the url in your browser.
+Create your own login from the Client Registration Page and you will have access to the whole site.
