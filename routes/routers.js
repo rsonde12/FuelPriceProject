@@ -30,9 +30,9 @@ router.post("/", async function(req,res){
       username: req.body.username,
       password: req.body.password,
   };
-  const { username } = clientReg;
+  const { username, password } = clientReg;
   await Registration.findOne({ username }).then(async(user) => {
-    if(user !== null && user.username === username){
+    if(user !== null && user.password === password){
       // If exists, render the page again with an error message
       req.session.userId = username;
       res.redirect("/fuel");
