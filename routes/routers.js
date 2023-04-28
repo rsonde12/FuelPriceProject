@@ -34,12 +34,10 @@ router.post("/", async function(req,res){
   await Registration.findOne({ username }).then(async(user) => {
     if(user !== null && user.username === username){
       // If exists, render the page again with an error message
-      console.log('login');
       req.session.userId = username;
       res.redirect("/fuel");
     }
     else{
-      console.log('Error');
       res.render('login.ejs', { error: 'Incorrect username or password, please try again' });
     }
   });
@@ -50,7 +48,6 @@ router.post("/", async function(req,res){
 // Define a route for the Registration page
 router.get('/ClientRegistration', (req, res) => {
   res.render('registration.ejs');
-  // res.sendFile(path.join(__dirname, '..', 'public', 'ClientRegistration.html'));
 });
 
 //Pulls registration info from front end and saves to database
@@ -85,7 +82,6 @@ router.post("/ClientRegistration", async function(req,res){
 // Define a route for the Profile page
 router.get('/clientProfile', (req, res) => {
   res.render('profile.ejs');
-  // res.sendFile(path.join(__dirname, '..', 'public', 'clientProfile.html'));
 });
 
 //Pulls profile info from front end and saves to database

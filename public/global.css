@@ -79,7 +79,7 @@ input[type="checkbox"] {
 
 /*fuel form page styles*/
 .fuelcontainer{
-  background-image: url(./oil_rig_1.jpg);
+  background-image: url(./offshore-oil-rig.jpg);
   height: 120vh;
   background-size: cover;
   background-position: center;
@@ -89,7 +89,7 @@ input[type="checkbox"] {
 }
 
 .fuelformcontainer{
-  --color: hsla(37, 85%, 45%, 0.685);
+  --color: hsla(226, 85%, 45%, 0.685);
   background-color: var(--color);
   box-shadow: 0 0 15px 0 var(--color);
   padding: 30px 20px;
