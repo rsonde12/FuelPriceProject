@@ -38,7 +38,7 @@ calculateButton.addEventListener('click', () => {
     const number = parseFloat(inputNumber.value);
     const date = dateInput.value;
     //check if number  or date is blank and if so display error else calculate price, set value, and make submission available 
-    if (isNaN(number) || date === '') {
+    if (isNaN(number) || date === '' || number <= 0) {
         submitButton.disabled = true;
         resultDiv.textContent = ``;
         alert('Please enter valid gallons and/or date');
